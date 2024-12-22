@@ -1,6 +1,4 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 
 
@@ -10,13 +8,19 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        List<Integer> list = new ArrayList();
+        int[] arr = new int[n];
 
         for(int i = 0; i<n; i++){
-            list.add(Integer.valueOf(st.nextToken()));
+            arr[i] = Integer.parseInt(st.nextToken());
         }
-        int max = list.stream().max(Integer::compareTo).orElse(0);
-        int min = list.stream().min(Integer::compareTo).orElse(0);
+
+        int max = arr[0];
+        int min = arr[0];
+
+        for (int i = 1; i < n; i++) {
+            if (arr[i] > max) max = arr[i];
+            if (arr[i] < min) min = arr[i];
+        }
 
         System.out.println(min+" "+max);
         br.close();
